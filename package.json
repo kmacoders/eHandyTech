@@ -1,5 +1,5 @@
 {
-  "name": "init",
+  "name": "dfgdf",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -28,7 +28,8 @@
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "nuxt-buefy": "^0.4.4"
+    "nuxt-buefy": "^0.4.4",
+    "nuxt-property-decorator": "^2.9.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",

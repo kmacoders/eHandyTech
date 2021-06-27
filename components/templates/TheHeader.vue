@@ -22,6 +22,7 @@
           v-else
           :key="index"
           :label="nav.title"
+          collapsible
         >
           <b-navbar-item
             v-for="(sub, i) in nav.subMenu"
@@ -104,7 +105,13 @@ export default class TheHeader extends Vue {
           link: '/'
         }
       ]
+    },
+    {
+      title: 'Contact Us',
+      link: '/contact-us',
+      subMenu: []
     }
+
   ]
 }
 </script>

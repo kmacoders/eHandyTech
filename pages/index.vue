@@ -1,12 +1,18 @@
 <template>
   <div>
-
+    <banner />
   </div>
 </template>
 
 <script>
+import { Vue, Component } from 'nuxt-property-decorator'
+import Banner from '@/components/templates/home/Banner'
 
-export default {
-  name: 'HomePage'
+@Component({
+  components: {
+    Banner
+  }
+})
+export default class Index extends Vue {
 }
 </script>

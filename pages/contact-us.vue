@@ -1,13 +1,18 @@
 <template>
   <div>
-    Contact
+    <contact-form />
   </div>
 </template>
 
 <script>
 import { Vue, Component } from 'nuxt-property-decorator'
+import ContactForm from '@/components/templates/contact-us/ContactForm'
 
-@Component
+@Component({
+  components: {
+    ContactForm
+  }
+})
 export default class ContactUs extends Vue {
 }
 </script>

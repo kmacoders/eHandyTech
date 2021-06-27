@@ -1,6 +1,10 @@
 <template>
   <div>
     <banner />
+    <banner />
+    <banner />
+    <banner />
+    <banner />
   </div>
 </template>
 

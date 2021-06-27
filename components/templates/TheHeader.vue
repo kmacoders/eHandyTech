@@ -1,5 +1,8 @@
 <template>
-  <b-navbar>
+  <b-navbar
+    fixed-top
+    shadow
+  >
     <template #brand>
       <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
         <img
@@ -91,6 +94,11 @@ export default class TheHeader extends Vue {
           link: '/'
         }
       ]
+    },
+    {
+      title: 'Blog',
+      link: '/blog',
+      subMenu: []
     },
     {
       title: 'eHandy Teams',

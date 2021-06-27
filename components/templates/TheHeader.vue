@@ -1,10 +1,10 @@
 <template>
   <b-navbar>
     <template #brand>
-      <b-navbar-item tag="router-link" :to="{ path: '/' }">
+      <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">
         <img
-          src="https://raw.githubusercontent.com/buefy/buefy/dev/static/img/buefy-logo.png"
-          alt="Lightweight UI components for Vue.js based on Bulma"
+          src="~assets/images/logo.png"
+          alt="eHandy logo"
         >
       </b-navbar-item>
     </template>
@@ -13,7 +13,8 @@
         <b-navbar-item
           v-if="nav.subMenu.length === 0"
           :key="index"
-          :href="nav.link"
+          tag="nuxt-link"
+          :to="nav.link"
         >
           {{ nav.title }}
         </b-navbar-item>
@@ -25,7 +26,8 @@
           <b-navbar-item
             v-for="(sub, i) in nav.subMenu"
             :key="i"
-            :href="sub.link"
+            tag="nuxt-link"
+            :to="sub.link"
           >
             {{ sub.title }}
           </b-navbar-item>
@@ -36,12 +38,12 @@
     <template #end>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
+          <NuxtLink to="/sign-in" class="button is-primary">
+            Sign up
+          </NuxtLink>
+          <NuxtLink to="/sign-in" class="button is-light">
             Log in
-          </a>
+          </NuxtLink>
         </div>
       </b-navbar-item>
     </template>
@@ -55,17 +57,42 @@ import { Vue, Component } from 'nuxt-property-decorator'
 export default class TheHeader extends Vue {
   navbarItems = [
     {
-      title: 'Trang chu',
+      title: 'Trang chủ',
       link: '/',
       subMenu: []
     },
     {
-      title: 'Khoa hoc',
+      title: 'Khóa học',
       link: '/',
-      subMenu: []
+      subMenu: [
+        {
+          title: 'HTML5/CSS3',
+          link: '/'
+        },
+        {
+          title: 'Javascript',
+          link: '/'
+        },
+        {
+          title: 'Vue',
+          link: '/'
+        },
+        {
+          title: 'React',
+          link: '/'
+        },
+        {
+          title: 'NodeJS',
+          link: '/'
+        },
+        {
+          title: 'NuxtJS',
+          link: '/'
+        }
+      ]
     },
     {
-      title: 'Ve chung toi',
+      title: 'eHandy Teams',
       link: '/',
       subMenu: [
         {

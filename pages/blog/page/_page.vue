@@ -14,6 +14,7 @@
 
 <script>
 import { Vue, Component } from 'nuxt-property-decorator'
+import getContent from '@/utils/getContent'
 import FeaturedBlog from '@/components/organisms/FeaturedBlog'
 import ListBlog from '@/components/organisms/ListBlog.vue'
 
@@ -21,7 +22,29 @@ import ListBlog from '@/components/organisms/ListBlog.vue'
   components: {
     FeaturedBlog,
     ListBlog
+  },
+  async asyncData ({ $content, params, error }) {
+    const content = await getContent($content, params, error, 'blog')
+
+    console.log(content)
+    return {
+      allArticles: content.allArticles,
+      paginatedArticles: content.paginatedArticles
+    }
+  },
+  head () {
+    return {
+      title: `Blog page ${this.$route.params.page} - eHanndy`,
+      link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `${this.$config.baseUrl}/blog/page/${this.$route.params.page}`
+        }
+      ]
+    }
   }
+
 })
 export default class PageBlog extends Vue {
 }

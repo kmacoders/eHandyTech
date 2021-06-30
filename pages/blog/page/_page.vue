@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-10 is-offset-1">
-          <FeaturedBlog />
+          <FeaturedBlog :first-blog="allArticles[0]" />
           <hr>
           <ListBlog />
         </div>

@@ -1,102 +1,36 @@
 <template>
   <div class="columns is-multiline">
-    <div class="column post is-6">
+    <div
+      v-for="(blog, index) in listBlogs"
+      :key="index"
+      :class="'column post' + isFour(index + 1)"
+    >
       <article class="columns is-multiline">
         <div class="column is-12 post-img">
-          <img src="https://cdn.emk.dev/templates/post-img.png" alt="Featured Image">
+          <img :src="blog.image" alt="Featured Image">
         </div>
         <div class="column is-12 featured-content ">
           <h3 class="heading post-category">
-            Category Name
+            <span
+              v-for="(tag, i) in blog.tags"
+              :key="i"
+            >
+              {{ tag }}
+            </span>&nbsp;
           </h3>
           <h1 class="title post-title">
-            Slightly Longer Blog Post Title
+            {{ blog.title }}
           </h1>
           <p class="post-excerpt">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus ratione harum eaque, animi nulla tempore quis, quam voluptatum.
+            {{ blog.description }}
           </p>
           <br>
-          <a href="#" class="button is-primary">Read More</a>
-        </div>
-      </article>
-    </div>
-    <div class="column post is-6">
-      <article class="columns is-multiline">
-        <div class="column is-12 post-img">
-          <img src="https://cdn.emk.dev/templates/post-img.png" alt="Featured Image">
-        </div>
-        <div class="column is-12 featured-content ">
-          <h3 class="heading post-category">
-            Category Name
-          </h3>
-          <h1 class="title post-title">
-            Slightly Longer Blog Post Title
-          </h1>
-          <p class="post-excerpt">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus ratione harum eaque, animi nulla tempore quis, quam voluptatum.
-          </p>
-          <br>
-          <a href="#" class="button is-primary">Read More</a>
-        </div>
-      </article>
-    </div>
-    <div class="column post is-4">
-      <article class="columns is-multiline">
-        <div class="column is-12 post-img">
-          <img src="https://cdn.emk.dev/templates/post-img.png" alt="Featured Image">
-        </div>
-        <div class="column is-12 featured-content ">
-          <h3 class="heading post-category">
-            Category Name
-          </h3>
-          <h1 class="title post-title">
-            Slightly Longer Blog Post Title
-          </h1>
-          <p class="post-excerpt">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus ratione harum eaque, animi nulla tempore quis, quam voluptatum.
-          </p>
-          <br>
-          <a href="#" class="button is-primary">Read More</a>
-        </div>
-      </article>
-    </div>
-    <div class="column post is-4">
-      <article class="columns is-multiline">
-        <div class="column is-12 post-img">
-          <img src="https://cdn.emk.dev/templates/post-img.png" alt="Featured Image">
-        </div>
-        <div class="column is-12 featured-content ">
-          <h3 class="heading post-category">
-            Category Name
-          </h3>
-          <h1 class="title post-title">
-            Slightly Longer Blog Post Title
-          </h1>
-          <p class="post-excerpt">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus ratione harum eaque, animi nulla tempore quis, quam voluptatum.
-          </p>
-          <br>
-          <a href="#" class="button is-primary">Read More</a>
-        </div>
-      </article>
-    </div>
-    <div class="column post is-4">
-      <article class="columns is-multiline">
-        <div class="column is-12 post-img">
-          <img src="https://cdn.emk.dev/templates/post-img.png" alt="Featured Image">
-        </div>
-        <div class="column is-12 featured-content ">
-          <h3 class="heading post-category">
-            Category Name
-          </h3>
-          <h1 class="title post-title">
-            Slightly Longer Blog Post Title
-          </h1>
-          <p class="post-excerpt">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus ratione harum eaque, animi nulla tempore quis, quam voluptatum.
-          </p>
-          <br>
-          <a href="#" class="button is-primary">Read More</a>
+          <NuxtLink
+            :to="blog.path"
+            class="button is-primary"
+          >
+            Read More
+          </NuxtLink>
         </div>
       </article>
     </div>
@@ -106,7 +40,20 @@
 <script>
 import { Vue, Component } from 'nuxt-property-decorator'
 
-@Component
+@Component({
+  props: {
+    listBlogs: {
+      type: Array,
+      require: true
+    }
+  }
+})
 export default class ListBlog extends Vue {
+  isFour (position) {
+    if (position <= 2 && this.listBlogs.length > 5) {
+      return ' is-6'
+    }
+    return ' is-4'
+  }
 }
 </script>

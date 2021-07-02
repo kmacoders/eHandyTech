@@ -5,7 +5,7 @@
         <div class="column is-10 is-offset-1">
           <FeaturedBlog :first-blog="allArticles[0]" />
           <hr>
-          <ListBlog />
+          <ListBlog :list-blogs="paginatedArticles"/>
         </div>
       </div>
     </div>

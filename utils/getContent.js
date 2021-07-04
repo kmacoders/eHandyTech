@@ -4,7 +4,9 @@ export default async ($content, params, error, path) => {
    * Số items trên 1 page
    */
   const perPage = 14
-  const allArticles = await $content(path).fetch()
+  const allArticles = await $content(path, { deep: true })
+    .sortBy('published', 'desc')
+    .fetch()
   const totalArticles = allArticles.length
 
   /**
@@ -30,7 +32,7 @@ export default async ($content, params, error, path) => {
   /**
    * get items skip
    */
-  const paginatedArticles = await $content(path)
+  const paginatedArticles = await $content(path, { deep: true })
     .only(['title', 'description', 'image', 'slug', 'tags', 'published'])
     .sortBy('published', 'desc')
     .limit(perPage)

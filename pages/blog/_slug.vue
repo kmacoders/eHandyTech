@@ -1,6 +1,6 @@
 <template>
   <article class="container content">
-    <nuxt-content :document="article" />
+    <nuxt-content :document="blogDetail" />
   </article>
 </template>
 
@@ -12,7 +12,10 @@ import getSiteMeta from '@/utils/getSiteMeta'
 @Component({
   name: 'ArticlePage',
   async asyncData ({ $content, params }) {
-    const article = await $content('blog', params.slug).fetch()
+    const findedBlog = await $content('blog', { deep: true })
+      .where({ slug: params.slug })
+      .fetch()
+    const [blogDetail] = findedBlog
 
     const [prev, next] = await $content('blog')
       .only(['title', 'slug', 'published'])
@@ -25,41 +28,41 @@ import getSiteMeta from '@/utils/getSiteMeta'
       .sortBy('published', 'desc')
       .fetch()
 
-    const articlesByTag = allBlogs.filter((article) => {
-      const articleTags = article.tags.map(x => x.toLowerCase())
-      return articleTags.includes(article.tags[0].toLowerCase())
+    const blogsByTag = allBlogs.filter((blog) => {
+      const blogTags = blog.tags.map(x => x.toLowerCase())
+      return blogTags.includes(blog.tags[0].toLowerCase())
     })
 
     return {
-      article,
-      articlesByTag,
+      blogDetail,
+      blogsByTag,
       prev,
       next
     }
   },
   head () {
     return {
-      title: this.article.title,
+      title: this.blogDetail.title,
       meta: [
         ...this.meta,
         {
-          property: 'article:published_time',
-          content: this.article.createdAt
+          property: 'blog:published_time',
+          content: this.blogDetail.createdAt
         },
         {
-          property: 'article:modified_time',
-          content: this.article.updatedAt
+          property: 'blog:modified_time',
+          content: this.blogDetail.updatedAt
         },
         {
-          property: 'article:tag',
-          content: this.article.tags ? this.article.tags.toString() : ''
+          property: 'blog:tag',
+          content: this.blogDetail.tags ? this.blogDetail.tags.toString() : ''
         },
         { name: 'twitter:label1', content: 'Written by' },
         { name: 'twitter:data1', content: global.author || '' },
         { name: 'twitter:label2', content: 'Filed under' },
         {
           name: 'twitter:data2',
-          content: this.article.tags ? this.article.tags.toString() : ''
+          content: this.blogDetail.tags ? this.blogDetail.tags.toString() : ''
         }
       ],
       link: [
@@ -74,11 +77,11 @@ import getSiteMeta from '@/utils/getSiteMeta'
   computed: {
     meta () {
       const metaData = {
-        type: 'article',
-        title: this.article.title,
-        description: this.article.description,
+        type: 'blog',
+        title: this.blogDetail.title,
+        description: this.blogDetail.description,
         url: `${this.$config.baseUrl}/blog/${this.$route.params.slug}`,
-        mainImage: this.article.image
+        mainImage: this.blogDetail.image
       }
       return getSiteMeta(metaData)
     }

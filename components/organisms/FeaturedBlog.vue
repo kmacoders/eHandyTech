@@ -23,7 +23,10 @@
               {{ firstBlog.description }}
             </p>
             <br>
-            <NuxtLink :to="{name: 'blog-slug', params: { slug: firstBlog.slug }}" class="button is-primary">
+            <NuxtLink
+              :to="{name: 'blog-slug', params: { slug: firstBlog.slug }}"
+              class="button is-primary"
+            >
               Đọc thêm
             </NuxtLink>
           </div>

@@ -26,10 +26,10 @@
           </p>
           <br>
           <NuxtLink
-            :to="blog.path"
+            :to="{ name: 'blog-slug', params: { slug: blog.slug }}"
             class="button is-primary"
           >
-            Read More
+            Đọc thêm
           </NuxtLink>
         </div>
       </article>

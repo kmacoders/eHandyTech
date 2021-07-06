@@ -24,7 +24,7 @@
             </p>
             <br>
             <NuxtLink :to="{name: 'blog-slug', params: { slug: firstBlog.slug }}" class="button is-primary">
-              Read More
+              Đọc thêm
             </NuxtLink>
           </div>
         </div>

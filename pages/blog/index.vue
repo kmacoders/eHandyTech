@@ -8,6 +8,14 @@
           <ListBlog :list-blogs="paginatedArticles" />
         </div>
       </div>
+      <div class="columns">
+        <div class="column is-10 is-offset-1">
+          <Pagination
+            :total="allArticles.length"
+            :per-page="perPage"
+          />
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -24,12 +32,13 @@ import ListBlog from '@/components/organisms/ListBlog.vue'
     ListBlog
   },
   async asyncData ({ $content, params, error }) {
+    const perPage = 8
     const content = await getContent($content, params, error, 'blog')
 
-    console.log(content)
     return {
       allArticles: content.allArticles,
-      paginatedArticles: content.paginatedArticles
+      paginatedArticles: content.paginatedArticles,
+      perPage
     }
   },
   head () {
@@ -62,6 +71,10 @@ export default class PageBlog extends Vue {
 }
 
 .blog-posts article {
+  padding: 1.5rem;
+}
+
+.blog-posts nav {
   padding: 1.5rem;
 }
 

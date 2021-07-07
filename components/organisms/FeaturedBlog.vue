@@ -1,13 +1,16 @@
 <template>
   <div class="columns featured-post is-multiline">
     <div class="column is-12 post">
+      <h2 class="title is-2">
+        {{ featuredTitle }}
+      </h2>
       <article class="columns featured">
         <div class="column is-7 post-img ">
           <img :src="firstBlog.image" :alt="firstBlog.title">
         </div>
         <div class="column is-5 featured-content va">
           <div>
-            <h3 class="heading post-category">
+            <h6 class="heading post-category">
               <NuxtLink
                 v-for="(tag, index) in firstBlog.tags"
                 :key="index"
@@ -15,10 +18,10 @@
               >
                 {{ tag }}
               </NuxtLink>
-            </h3>
-            <h1 class="title post-title">
+            </h6>
+            <h3 class="title is-3 post-title">
               {{ firstBlog.title }}
-            </h1>
+            </h3>
             <p class="post-excerpt">
               {{ firstBlog.description }}
             </p>
@@ -48,8 +51,6 @@ import { Vue, Component } from 'nuxt-property-decorator'
   }
 })
 export default class FeaturedBlog extends Vue {
-  mounted () {
-    console.log(this.firstBlog)
-  }
+  featuredTitle = 'Bài viết mới nhất'
 }
 </script>

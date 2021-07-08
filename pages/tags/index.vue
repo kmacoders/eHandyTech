@@ -1,29 +1,24 @@
 <template>
-  <section>
-    <div class="container">
-      <h1 class="title is-3 mt-3 mb-3 is-flex is-justify-content-center is-align-items-center">
-        All Tags
-      </h1>
-      <ul class="columns">
-        <li v-for="tag in tags" :key="tag" class="column">
-          <nuxt-link
-            :to="{ name: 'tags-tag', params: { tag: tag.toLowerCase() } }"
-            class="text-4xl hover:underline"
-          >
-            {{ tag }}
-          </nuxt-link>
-        </li>
-      </ul>
-    </div>
-  </section>
+  <div class="container">
+    <HeroSection
+      title="Tags"
+      sub-title="All tags in eHandy"
+    />
+    <ListTags :tags="tags" />
+  </div>
 </template>
 
 <script lang="ts">
 import { IContentDocument } from '@nuxt/content/types/content'
 import { Vue, Component } from 'nuxt-property-decorator'
+import Hero from '@/components/templates/tags/Hero.vue'
+import ListTags from '@/components/templates/tags/ListTags.vue'
 
 @Component({
-  name: 'TagListPage',
+  components: {
+    HeroSection: Hero,
+    ListTags
+  },
   async asyncData ({ $content }) {
     function onlyUnique (value: string, index: number, self: string[]) {
       return self.indexOf(value) === index

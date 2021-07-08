@@ -1,14 +1,16 @@
 <template>
-  <section class="tags-page-wrapper">
-    <div class="tags-page__header">
-      <h2>
-        Tag: {{ $route.params.tag }}
-      </h2>
-    </div>
-    <div class="tags-page__content-wrapper">
-      <ListBlog :list-blogs="blogsByTag" />
-    </div>
-  </section>
+  <div class="container">
+    <section class="section tags-page-wrapper">
+      <div class="tags-page__header">
+        <h2>
+          Tag: {{ $route.params.tag }}
+        </h2>
+      </div>
+      <div class="tags-page__content-wrapper">
+        <ListBlog :list-blogs="blogsByTag" />
+      </div>
+    </section>
+  </div>
 </template>
 
 <script>

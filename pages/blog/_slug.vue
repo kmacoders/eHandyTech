@@ -1,6 +1,10 @@
 <template>
   <article class="container content">
-    <nuxt-content :document="blogDetail" />
+    <div class="columns">
+      <div class="column">
+        <nuxt-content :document="blogDetail" />
+      </div>
+    </div>
   </article>
 </template>
 
@@ -10,7 +14,7 @@ import global from '@/utils/global'
 import getSiteMeta from '@/utils/getSiteMeta'
 
 @Component({
-  name: 'ArticlePage',
+  name: 'BlogPage',
   async asyncData ({ $content, params }) {
     const findedBlog = await $content('blog', { deep: true })
       .where({ slug: params.slug })

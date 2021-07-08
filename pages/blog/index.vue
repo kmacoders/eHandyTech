@@ -2,7 +2,7 @@
   <section class="section">
     <div class="container">
       <div class="columns">
-        <div class="column is-10 is-offset-1">
+        <div class="column">
           <FeaturedBlog :first-blog="allArticles[0]" />
           <hr>
           <ListBlog :list-blogs="paginatedArticles" />

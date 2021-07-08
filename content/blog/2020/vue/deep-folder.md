@@ -1,6 +1,7 @@
 ---
 title: Deep folder Vue 
 description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
+author: 'Huwng'
 image: 'http://placekitten.com/g/1920/1080'
 tags: ['vuejs']
 published: '2020-01-12'

@@ -15,4 +15,6 @@ export interface IContent extends IContentDocument {
   toc: IToc[];
   image: string;
   tags: string[];
+  published: string;
+  author: string;
 }

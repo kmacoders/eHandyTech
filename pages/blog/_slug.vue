@@ -1,13 +1,27 @@
 <template>
-  <article class="container content">
-    <div class="columns">
-      <div class="column">
-        <nuxt-content :document="blogDetail" />
+  <div class="blog-detail container is-max-desktop content">
+    <section class="section blog-detail__featured-img">
+      <img :src="blogDetail.image">
+    </section>
+    <section class="section blog-detail__info">
+      <h1 class="title is-2">
+        {{ blogDetail.title }}
+      </h1>
+      <div>
+        <span>{{ blogDetail.author }}</span>
+        </span>{{ blogDetail.published }}</span>
       </div>
-    </div>
-  </article>
+      <hr>
+    </section>
+    <section class="section">
+      <div class="columns">
+        <div class="column">
+          <nuxt-content :document="blogDetail" />
+        </div>
+      </div>
+    </section>
+  </div>
 </template>
-
 <script>
 import { Vue, Component } from 'nuxt-property-decorator'
 import global from '@/utils/global'
@@ -20,6 +34,7 @@ import getSiteMeta from '@/utils/getSiteMeta'
       .where({ slug: params.slug })
       .fetch()
     const [blogDetail] = findedBlog
+    console.log(blogDetail)
 
     const [prev, next] = await $content('blog', { deep: true })
       .only(['title', 'slug', 'published'])
@@ -93,3 +108,14 @@ import getSiteMeta from '@/utils/getSiteMeta'
 })
 export default class BlogDetail extends Vue {}
 </script>
+<style lang="scss">
+.blog-detail {
+  section:not(:last-child) {
+    padding-bottom: 0;
+  }
+
+  section:not(:first-child) {
+    padding-top: 1rem;
+  }
+}
+</style>

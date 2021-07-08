@@ -2,7 +2,7 @@
 title: Fisrt Blog Post eHandy
 description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
 image: 'http://placekitten.com/g/1920/1080'
-tags: ['VueJS', 'Nuxt']
+tags: ['Node', 'Nuxt']
 published: '2021-03-30'
 ---
 

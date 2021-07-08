@@ -98,7 +98,16 @@ export default class TheHeader extends Vue {
     {
       title: 'Blog',
       link: '/blog',
-      subMenu: []
+      subMenu: [
+        {
+          title: 'Tất cả bài viết',
+          link: '/blog'
+        },
+        {
+          title: 'Bài viết theo chủ đề',
+          link: '/tags'
+        }
+      ]
     },
     {
       title: 'eHandy Teams',

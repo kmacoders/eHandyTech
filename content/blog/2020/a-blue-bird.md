@@ -2,7 +2,7 @@
 title: How to code
 description: 'Empower your NuxtJS application with @nuxt/content module: write in a content/ directory and fetch your Markdown, JSON, YAML and CSV files through a MongoDB like API, acting as a Git-based Headless CMS.'
 image: 'http://placekitten.com/g/1920/1080'
-tags: ['VueJS', 'Nuxt']
+tags: ['VueJS', 'Nuxt', 'Frontend']
 published: '2020-02-12'
 ---
 

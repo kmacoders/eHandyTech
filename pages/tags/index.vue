@@ -1,16 +1,20 @@
 <template>
   <section>
-    <h1>All tag</h1>
-    <ul>
-      <li v-for="tag in tags" :key="tag" class="text-center mb-2">
-        <nuxt-link
-          :to="{ name: 'tags-tag', params: { tag: tag.toLowerCase() } }"
-          class="text-4xl hover:underline"
-        >
-          {{ tag }}
-        </nuxt-link>
-      </li>
-    </ul>
+    <div class="container">
+      <h1 class="title is-3 mt-3 mb-3 is-flex is-justify-content-center is-align-items-center">
+        All Tags
+      </h1>
+      <ul class="columns">
+        <li v-for="tag in tags" :key="tag" class="column">
+          <nuxt-link
+            :to="{ name: 'tags-tag', params: { tag: tag.toLowerCase() } }"
+            class="text-4xl hover:underline"
+          >
+            {{ tag }}
+          </nuxt-link>
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 

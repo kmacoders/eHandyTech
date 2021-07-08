@@ -17,13 +17,13 @@ import getSiteMeta from '@/utils/getSiteMeta'
       .fetch()
     const [blogDetail] = findedBlog
 
-    const [prev, next] = await $content('blog')
+    const [prev, next] = await $content('blog', { deep: true })
       .only(['title', 'slug', 'published'])
       .sortBy('published', 'desc')
       .surround(params.slug)
       .fetch()
 
-    const allBlogs = await $content('blog')
+    const allBlogs = await $content('blog', { deep: true })
       .only(['title', 'description', 'image', 'slug', 'published', 'tags'])
       .sortBy('published', 'desc')
       .fetch()

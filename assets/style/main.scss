@@ -33,3 +33,9 @@ $colors: map-merge($colors, $addColors);
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+*,
+html,
+body {
+  font-family: 'Montserrat', sans-serif !important;
+}

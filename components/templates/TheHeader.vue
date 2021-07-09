@@ -1,7 +1,8 @@
 <template>
   <b-navbar
     fixed-top
-    shadow
+    transparent
+    spaced
   >
     <template #brand>
       <b-navbar-item tag="nuxt-link" :to="{ path: '/' }">

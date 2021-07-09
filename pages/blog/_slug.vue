@@ -1,15 +1,18 @@
 <template>
   <div class="blog-detail container is-max-desktop content">
-    <section class="section blog-detail__featured-img">
+    <section class="blog-detail__featured-img" style="margin-top: 2rem;">
       <img :src="blogDetail.image">
     </section>
     <section class="section blog-detail__info">
-      <h1 class="title is-2">
+      <h1 class="title is-1 has-text-primary">
         {{ blogDetail.title }}
       </h1>
       <div>
+        {{ blogDetail.description }}
+      </div>
+      <div>
         <span>{{ blogDetail.author }}</span>
-        </span>{{ blogDetail.published }}</span>
+        <span>{{ blogDetail.published }}</span>
       </div>
       <hr>
     </section>
@@ -116,6 +119,10 @@ export default class BlogDetail extends Vue {}
 
   section:not(:first-child) {
     padding-top: 1rem;
+  }
+
+  [aria-hidden="true"] {
+    display: none;
   }
 }
 </style>

@@ -1,23 +1,26 @@
 <template>
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column">
-          <FeaturedBlog :first-blog="allArticles[0]" />
-          <hr>
-          <ListBlog :list-blogs="paginatedArticles" />
+  <div class="container">
+    <MinimalBanner />
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column">
+            <FeaturedBlog :first-blog="allArticles[0]" />
+            <hr>
+            <ListBlog :list-blogs="paginatedArticles" />
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <Pagination
+              :total="allArticles.length"
+              :per-page="perPage"
+            />
+          </div>
         </div>
       </div>
-      <div class="columns">
-        <div class="column">
-          <Pagination
-            :total="allArticles.length"
-            :per-page="perPage"
-          />
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script>

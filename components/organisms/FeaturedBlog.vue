@@ -1,7 +1,7 @@
 <template>
   <div class="columns featured-post is-multiline">
     <div class="column is-12 post">
-      <h2 class="title is-2">
+      <h2 class="featured-post__title title is-3 has-text-primary">
         {{ featuredTitle }}
       </h2>
       <article class="columns featured">
@@ -39,7 +39,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 
 @Component({
@@ -51,6 +51,31 @@ import { Vue, Component } from 'nuxt-property-decorator'
   }
 })
 export default class FeaturedBlog extends Vue {
-  featuredTitle = 'Bài viết mới nhất'
+  featuredTitle: string = 'Latest'
 }
 </script>
+<style lang="scss">
+.featured-post {
+  .featured-post__title {
+    position: relative;
+    width: fit-content;
+  }
+
+  .featured-post__title::after {
+    content: '';
+    width: 60px;
+    height: 4px;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    background-color: #242424;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .featured-post__title:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+</style>
